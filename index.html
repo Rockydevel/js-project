@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/dbe2e98f43.js" crossorigin="anonymous"></script>
+
+
+
+    <style>
+
+        #r{
+            height: 50px;
+            width: 280px;
+            border: 2px solid blanchedalmond;
+            border-radius: 10px;
+            font-size: 20px;
+            text-align: center;
+            box-shadow: 6px 6px 10px rgb(167, 56, 56) inset;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        #s{
+            height: 30px;
+            width: 80px;
+            border: 2px solid black;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 3px 3px 10px rgb(247, 76, 76) inset;
+            font-size: 20px;
+        }
+        #a{
+            text-align: center;
+            color:rgb(15, 15, 15);
+            margin-bottom: 40px;
+        }
+        #b{
+            font-size: 20px;
+            color:rgb(4, 23, 229);
+            margin-bottom: 20px;
+            width:fit-content;
+            
+        }
+
+        #c{
+            text-align: center;
+            background-color: rgb(249, 78, 78);
+            height: 50px;
+            width: 700px;
+            margin-bottom: 30px;
+            box-shadow: 5px 5px 5px;
+        }
+
+        #d{
+            text-align: center;
+            color: rgb(15, 9, 9);
+            margin-bottom: 40px;
+        }
+
+        #e{
+            height: 39px;
+            width: 280px;
+            text-align: center;
+            box-shadow: 5px 5px 15px rgb(59, 40, 18) inset;
+            font-size: 20px;
+            margin-bottom: 30px;
+
+        }
+        #e:hover{
+            transform: scale(1.2);
+        
+        }
+
+        #f{
+            height: 38px;
+            width: 280px;
+            text-align: center;
+            box-shadow: 5px 5px 10px rgb(59, 40, 18) inset;
+            margin-left: 30px;
+            font-size: 20px;
+        }
+        #f:hover{
+            transform: scale(1.2);
+        
+        }
+        i{
+            font-size: 90px;
+            margin-left:180px ;
+            position: relative;
+            bottom: 50px;
+        }
+        img{
+            height: 140px;
+            margin-left: 940px;
+        }
+        ol{
+            display:flex;
+            justify-content: space-around;
+            font-size: 25px;
+        }
+        div{
+            border: 3px solid black;
+            height: 80px;
+            background-color: #F6B17A;
+            box-shadow:  5px 5px 10px rgb(5, 21, 51) inset;
+        }
+        a{
+            text-decoration: none;
+        }
+        body{
+            background-color: #bbe2ec ;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div>
+        <ol>
+            <p> <a href="./index.html" >Home</a></p>
+            <p ><a href="./service.html">Services</a></p>
+            <p> <a href="./information.html">Instructions</a></p>
+            <p> <a href="./helpline.html">Helpline</a></p>
+        </ol>
+    </div>
+
+    <h1 id="a">INDIAN RAILWAYS PASSENGER RESERVATION ENQUIRY</h1>
+
+    <i class="fa fa-train" aria-hidden="true"></i>
+    <img src="lion 4.png" alt="hello">
+
+
+    <center>
+
+   
+
+
+    <button id="e"> Services</button>
+    <button id="f">Instruction</button>
+
+    <marquee id="b">Please help Indian railways and government of India in moving towards a digitized and cashless economy. Eradicate black money.
+    </marquee>
+
+
+    <h1 id="c">Passenger Current Status Enquiry</h1>
+
+
+    <h2 id="d">Enter the PNR for your booking below to get the current status.<br> You will find it on the top left corner of the ticket.</h2>
+
+     <form action="">
+        <input type="search" placeholder=" pnr-status-indian-railway" id="r">
+        <input type="submit" id="s">
+    </form>
+</center>
+
+    
+
+    <script>
+
+        var btn=document.getElementsByTagName("button")
+        btn[0].addEventListener("click",()=>{
+            window.location.assign("./service.html")
+        })
+
+        var btnn=document.getElementsByTagName("button")
+        btn[1].addEventListener("click",()=>{
+            window.location.assign("./information.html")
+        })
+
+
+
+
+    document.forms[0].addEventListener("submit",(e)=>{
+    e.preventDefault()
+
+    fetch(`https://pnr-status-indian-railway.p.rapidapi.com/pnr-check/${e.target[0].value}`,{
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key':'b3c04168c6mshe1faf6719d73c96p15667cjsnb02431353a76',
+		'X-RapidAPI-Host': 'pnr-status-indian-railway.p.rapidapi.com'
+	}
+})
+
+
+        .then((value)=>{
+            return value.json()
+        }).then((value)=>{
+            console.log(value);
+            localStorage.setItem("arjun",JSON.stringify(value))
+           
+            e.target[0].value=""
+            })  
+            window.location.assign("./empty.html")
+          
+});
+
+           
+    </script>
+</body>
+</html>

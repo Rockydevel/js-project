@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table,th,td{
+            border: 2px solid rgb(168, 12, 12);
+             border-collapse: collapse; 
+        }
+        th,td{
+            width: 120px;
+            height: 50px;
+            text-align: center;
+        }
+        td{
+            color:yellow;
+            font-size: 20px;
+            background-color: rgb(16, 113, 120);
+        }
+        th{
+            background-color: burlywood;
+        }
+        #a{
+            margin: auto;
+            margin-top: 100px;
+           
+        }
+        h1{
+            position: relative;
+            bottom: 1150px;
+            text-align: center;
+
+
+        }
+        button{
+            height: 30px;
+            width: 100px;
+            background-color: rgb(230, 16, 8);
+            color: white;
+            font-size: 20px;
+            margin-left: 700px;
+            margin-top: 30px;
+            box-shadow: 5px 5px 12px rgb(238, 239, 237) inset;
+
+
+        }
+        body{
+            background-color: #5F374B;
+        }
+    </style>
+</head>
+<body>
+
+    
+
+    <table id="a">
+
+        <tr>
+            <th>No of Stations</th>
+            <th>Train Id</th>
+            <th>Station Name</th>
+            <th>arrival Time</th>
+            <th>departure Time</th>
+            <th>Station Id</th>
+            <th>Distance</th>
+            <th>Station Code</th>
+            <th>Travelling Day</th>
+        </tr>
+    
+    
+    </table>
+
+    <button> Go Back</button>
+
+    <script>
+        var data=  window.localStorage.getItem("arjun")
+        obj=JSON.parse(data)
+        console.log(obj);
+
+        var h1=document.createElement("h1")
+        document.body.appendChild(h1)
+        h1.innerText=obj["data"]["trainInfo"]["name"]
+
+
+
+        var tab= document.getElementsByTagName("table")
+
+    for(let i=0;i<obj.data.trainRoutes.length;i++){
+        console.log(obj["data"]["trainRoutes"][i]["trainId"]);
+        var tr1=document.createElement("tr")
+        tab[0].appendChild(tr1)
+
+
+        
+        var td1=document.createElement("td")
+        tr1.appendChild(td1)
+        td1.innerText=i+1
+
+        var td1=document.createElement("td")
+        tr1.appendChild(td1)
+        td1.innerText=obj["data"]["trainRoutes"][i]["trainId"]
+
+        var td1=document.createElement("td")
+        tr1.appendChild(td1)
+        td1.innerText=obj["data"]["trainRoutes"][i]["stationName"]
+
+
+        var td1=document.createElement("td")
+        tr1.appendChild(td1)
+        td1.innerText=obj["data"]["trainRoutes"][i]["arrivalTime"]
+
+        var td1=document.createElement("td")
+        tr1.appendChild(td1)
+        td1.innerText=obj["data"]["trainRoutes"][i]["departureTime"]
+
+
+        var td1=document.createElement("td")
+        tr1.appendChild(td1)
+        td1.innerText=obj["data"]["trainRoutes"][i]["stationId"]
+
+        var td1=document.createElement("td")
+        tr1.appendChild(td1)
+        td1.innerText=obj["data"]["trainRoutes"][i]["distance"]
+
+
+        var td1=document.createElement("td")
+        tr1.appendChild(td1)
+        td1.innerText=obj["data"]["trainRoutes"][i]["stationCode"]
+
+        var td1=document.createElement("td")
+        tr1.appendChild(td1)
+        td1.innerText=obj["data"]["trainRoutes"][i]["travellingDay"]
+    }
+
+
+    
+        var l=document.getElementsByTagName("button")
+        l[0].addEventListener("click",()=>{
+            window.location.assign("./index.html")
+
+        })
+
+
+    </script>
+    
+</body>
+</html>

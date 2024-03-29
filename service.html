@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        h1{
+            text-align: center;
+            color:#d1ff05;
+            font-size: 40px;
+            font-family: "Gill Sans", sans-serif;
+        }
+        p{
+            text-align: center;
+            font-size: 22px;
+            color: white;
+            font-family: serif;
+        }
+        body{
+            background-color: #31304D;
+        }
+        button{
+            height: 30px;
+            width: 100px;
+            font-size: 20px;
+            position: relative;
+            left: 680px;
+            top: 740px;
+            background-color: rgb(245, 241, 4);
+            box-shadow: 5px 5px 12px rgb(238, 239, 237) inset;
+
+        }
+        @media screen and (min-width:320px) and (max-width:1024px){
+            body{
+                height: 130vh;
+                margin: auto;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+
+    <button>Go Back</button>
+
+    <h1>IRCTC PNR Status SMS Enquiry</h1>
+<p><br>
+    1.Format: PNR <10 Digit PNR Number><br>
+    Example: PNR 2356969690<br><br>
+    2.SMS Enquiry for Arrival or Departure of train<br>
+    Format: AD <Train No.><STD code of Station>.<br>
+    Example: AD 12352 0612<br><br>
+    3.SMS Enquiry for Seat Availability of General Quota<br>
+    Format: SEAT <Train Number><Date of Journey (DDMMYY)><Source Station’s STD Code><Destination Station’s STD><Class of Travel><Quota><br>
+    Example: SEAT 12008 080720 080 044 CC  <br><br>
+    5.SMS Enquiry for Indian Railway Time Table<br>
+    Format: TIME <Train Number><br>
+    Example: TIME 12351<br><br>
+    6.Train Fare Enquiry through SMS<br>
+    Format: FARE <Train no.><Date of Journey (DDMMYY)><Source Station STD Code><Destination Station’s STD Code><Class of Travel*><Quota**><br>
+    Example: FARE 12008 080720 080 044 2A G<br><br>
+    7.For Setting Destination Alert<br>
+    Format: ALERT <10 Digit PNR Number><br>
+    Example: ALERT 2356969690
+    </p>
+    <script>
+         var m=document.getElementsByTagName("button")
+        m[0].addEventListener("click",()=>{
+            window.location.assign("./index.html")
+
+        })
+
+
+    </script>
+
+    
+</body>
+</html>
