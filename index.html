@@ -176,6 +176,8 @@
     document.forms[0].addEventListener("submit",(e)=>{
     e.preventDefault()
 
+    localStorage.removeItem("arjun")
+
     fetch(`https://pnr-status-indian-railway.p.rapidapi.com/pnr-check/${e.target[0].value}`,{
 	method: 'GET',
 	headers: {
@@ -189,12 +191,15 @@
             return value.json()
         }).then((value)=>{
             console.log(value);
+             if(value.status){
             localStorage.setItem("arjun",JSON.stringify(value))
+             window.location.assign("./empty.html")
+             }else{
+                alert(value.error)
+             }
+            })  
            
             e.target[0].value=""
-            })  
-            window.location.assign("./empty.html")
-          
 });
 
            
